@@ -16,3 +16,8 @@ yarn dev
 ```
 
 Visit [localhost:4000](http://localhost:4000)
+
+## TODO
+
+- [ ] attach to server-side rendered html
+- [ ] output js file for each page
