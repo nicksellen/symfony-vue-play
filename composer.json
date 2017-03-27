@@ -1,0 +1,16 @@
+{
+    "name": "nicksellen/symfony-vue-play",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Nick Sellen",
+            "email": "git@nicksellen.co.uk"
+        }
+    ],
+    "require": {
+        "symfony/routing": "^3.2",
+        "symfony/http-foundation": "^3.2",
+        "symfony/event-dispatcher": "^3.2",
+        "symfony/http-kernel": "^3.2"
+    }
+}
