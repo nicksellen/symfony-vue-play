@@ -36,14 +36,14 @@ class FooController
   {
     $loader = new FilesystemLoader(__DIR__.'/views/%name%');
     $templating = new PhpEngine(new TemplateNameParser(), $loader);
-    $content = $templating->render('home.html.twig', array());
+    $content = $templating->render('home.html.php', array());
     return new Response($content);
   }
   public function otherPage()
   {
     $loader = new FilesystemLoader(__DIR__.'/views/%name%');
     $templating = new PhpEngine(new TemplateNameParser(), $loader);
-    $content = $templating->render('other-page.html.twig', array());
+    $content = $templating->render('other-page.html.php', array());
     return new Response($content);
   }
   public function apiAction()

@@ -1,4 +1,5 @@
 const path = require('path')
+const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 module.exports = options => {
 
@@ -13,7 +14,7 @@ module.exports = options => {
   ];
 
   let entryConf = {
-    client: [], // gets upset if you don't include this
+    client: [], // gets upset if you don't include this,
   };
 
   let proxyConf = {
@@ -33,17 +34,18 @@ module.exports = options => {
     entry: entryConf,
     filename: {
       // just output simple names, not magic hash ones as we define js paths in php backend
-      js: '[name].js',
-      css: '[name].css',
-      static: '[name].[ext]'
+      js: 'assets/[name].js',
+      css: 'assets/[name].css',
+      static: 'assets/[name].[ext]'
     },
     postcss: [
       // add more postcss plugins here
       // by default we have autoprefixer pre added
     ],
     html: false,
-    vendor: false, // not working properly yet... undefined webpackJsonp error in prod
+    vendor: true,
     webpack(config) {
+      // to see full webpack config for debugging purposes...
       require('fs').writeFileSync('/tmp/wp.json', JSON.stringify(config, null, 2));
       return config
     },
