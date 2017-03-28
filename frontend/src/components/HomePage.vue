@@ -18,6 +18,6 @@
 
 <style module>
   .title {
-    color: blue;
+    color: orange;
   }
 </style>
