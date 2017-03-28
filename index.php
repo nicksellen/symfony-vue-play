@@ -23,11 +23,28 @@ use Symfony\Component\HttpKernel\HttpKernel;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
+use Symfony\Component\Templating\PhpEngine;
+use Symfony\Component\Templating\TemplateNameParser;
+use Symfony\Component\Templating\Loader\FilesystemLoader;
+
+
+// sorry, ignore my awful php coding...
+
 class FooController
 {
-  public function someAction()
+  public function homePage()
   {
-    return new Response('<h1>yay</h1>');
+    $loader = new FilesystemLoader(__DIR__.'/views/%name%');
+    $templating = new PhpEngine(new TemplateNameParser(), $loader);
+    $content = $templating->render('home.html.twig', array());
+    return new Response($content);
+  }
+  public function otherPage()
+  {
+    $loader = new FilesystemLoader(__DIR__.'/views/%name%');
+    $templating = new PhpEngine(new TemplateNameParser(), $loader);
+    $content = $templating->render('other-page.html.twig', array());
+    return new Response($content);
   }
   public function apiAction()
   {
@@ -46,8 +63,11 @@ $routes = new RouteCollection();
 
 // should be able to load them like this but I am too phpstupid...
 //'_controller' => 'Foo:FooController::someAction',
-$routes->add('woo', new Route('/', array(
-  '_controller' => array($fooController, 'someAction'),
+$routes->add('homePage', new Route('/', array(
+  '_controller' => array($fooController, 'homePage'),
+)));
+$routes->add('otherPage', new Route('/other-page', array(
+  '_controller' => array($fooController, 'otherPage'),
 )));
 $routes->add('api', new Route('/api/yay', array(
   '_controller' => array($fooController, 'apiAction'),

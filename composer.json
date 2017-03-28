@@ -11,6 +11,7 @@
         "symfony/routing": "^3.2",
         "symfony/http-foundation": "^3.2",
         "symfony/event-dispatcher": "^3.2",
-        "symfony/http-kernel": "^3.2"
+        "symfony/http-kernel": "^3.2",
+        "symfony/templating": "^3.2"
     }
 }
